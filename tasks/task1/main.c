@@ -2,11 +2,10 @@
 
 int main (int argc, char **argv)
 {
-    char **args = (char **)malloc (sizeof (char *) * argc);
-    if (!args)
-        return 1;
+    char **args;
     int index = 0;
-    args = ft_dup (args, argv, argc, &index);
+
+    args = ft_dup (argv, argc, &index);
 
     forking (argc, args);
    

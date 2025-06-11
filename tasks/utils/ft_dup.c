@@ -1,14 +1,14 @@
 #include "../tasks.h"
 // Copy from argv
-char **ft_dup (char **args, char **argv, int argc, int *index)
+char **ft_dup (char **argv, int argc, int *index)
 {
+    char **args = (char **)malloc (sizeof (char *) * argc);
     int i = 1;
     while (i < argc && argv && argv[i])
     {
-        args[*index] = (char *) malloc (sizeof (char) * strlen (argv[i]) + 1);
+        args[*index] = strdup(argv[i]);
         if (!args[*index])
             return NULL;
-        strncpy(args[*index], argv[i], strlen (argv[i]));
         i++;
         (*index)++;
     }

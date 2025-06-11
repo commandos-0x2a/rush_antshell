@@ -1,48 +1,32 @@
 #include <unistd.h>
-#include <stdio.h>
 #include <sys/wait.h>
 #include <stdlib.h>
-#include <signal.h>
+#include <fcntl.h>
+#include <stdio.h>
 
-void print_status (int wstatus)
-{
-		if (WIFEXITED(wstatus))
-	{
-		printf("Exited with %d\n",WEXITSTATUS(wstatus));
-	}
-	if (WIFSIGNALED(wstatus))
-	{
-		printf("Signaled by %d\n", WTERMSIG(wstatus));
-	}
-
-}
+// if (fork())
+// 	{
+// 		char *argv[] = {
+// 			"grep",
+// 			"A",
+// 		};
+// 		execve("/usr/bin/grep", argv, NULL);
+// 		// perror("execve");
+// 		// exit(1);
+// 	}
 
 int main()
 {
-	char *argv[] = {
-		"ls",
-		NULL
-	};
-	int pid = fork();
-	if (pid == 0)
+	int fd = open("data.txt", O_RDONLY);
+	if (fd == -1)
 	{
-		// execve("/bin/ls", argv, NULL);
-		// perror("execve");
-		exit(1);
+		perror("open");
+		return (1);
 	}
-	int pid2 = fork();
-	if (pid2 == 0)
-	{
-		// execve("/bin/ls", argv, NULL);
-		// perror ("execve2");
-		sleep (5);
-		exit(2);
-	}
-	printf("test\n");
-	kill(pid2, SIGKILL);
-	int wstatus;
-	waitpid(pid, &wstatus, 0);
-	print_status (wstatus);
-	waitpid(pid2, &wstatus, 0);
-	print_status (wstatus);
+	dup2(fd, 0);
+
+	char buf[1024];
+	ssize_t bytes = read(0, buf, sizeof(buf));
+	write(1, buf, bytes);
+	return (0);
 }
