@@ -10,6 +10,14 @@
 > ./runner "ls -la" "sleep 10" "ls -l"
 ```
 
+## Task2 (14/6)
+- make program to run complex command each args
+- program apply redirection
+### Example:
+```sh
+> ./runner "< data.txt cat -e > out" "> out2 echo Test" "< in1 grep A" "echo test_append >> out2"
+```
+
 -------
 # References
 [ Executable and Linkable Format ](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
