@@ -4,10 +4,10 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude
 NAME = antshell
 
 SRCS =  main.c \
-	../utils/forking.c \
-	../utils/ft_split.c \
-	../utils/ft_dup.c \
-	../utils/free_all.c\
+		../utils/ft_split.c\
+		if_one_cmd.c
+
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -12,5 +12,7 @@ char **ft_dup (char **argv, int argc, int *index);
 char	**ft_split(char const *str, char c);
 size_t	count_words(char const *str, char delimeter);
 void forking(int argc, char **args);
+void if_one_cmd (char *av);
+
 
 #endif
