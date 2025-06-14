@@ -6,6 +6,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 void free_all (char **args, int argc);
 char **ft_dup (char **argv, int argc, int *index);
