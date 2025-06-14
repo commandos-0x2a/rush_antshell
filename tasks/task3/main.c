@@ -13,7 +13,7 @@ int main (int ac, char **av)
         int j = 2;
         char **args = (char **)malloc (sizeof (char *) * (ac - 1));
         args[0] = "echo";
-        while (j < ac - 1)
+        while (j < ac)
         {
             args[i] = av[j];
             i++;
