@@ -29,13 +29,13 @@ int main()
     char *a []=
 	{
 		"echo",
-		"asmaa \n sma",
+		"AAAAAAA",
 		NULL 
 	};
 	int id2 = fork();
 	if (id2 == 0)
 	{
-        int fd3 = open("out2.txt", O_RDWR | O_CREAT , 0777);
+        int fd3 = open("out2.txt", O_RDWR | O_CREAT | O_TRUNC , 0777);
         dup2(fd3, 1);
         close(fd3);
 		execve("/usr/bin/echo", a, NULL);
