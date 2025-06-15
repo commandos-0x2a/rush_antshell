@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <fcntl.h>
 
 char	**ft_split(char const *str, char c);
 size_t	count_words(char const *str, char delimeter);
