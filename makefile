@@ -4,17 +4,15 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude
 NAME = antshell
 
 SRCS =  main.c \
-	../utils/forking.c \
-	../utils/ft_split.c \
-	../utils/ft_dup.c \
-	../utils/free_all.c
+	./utils/forking.c \
+	./utils/ft_split.c \
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lreadline
 
 clean:
 	rm -f $(OBJS)
